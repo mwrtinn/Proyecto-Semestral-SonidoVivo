@@ -12,6 +12,8 @@ Sonido Vivo
 Tienda en línea dedicada a la venta de instrumentos musicales y accesorios de audio.
 
 ## Estructura del proyecto
+
+```text
 src/
 ├── components/
 │   ├── atoms/
@@ -24,11 +26,12 @@ src/
 │   └── templates/
 └── pages/
     └── Login.jsx
+```
 
 ## Tecnologías
 - React + Vite
 - React Bootstrap
--React Router DOM
+- React Router DOM
 
 ## Cómo ejecutar el proyecto
 npm install
