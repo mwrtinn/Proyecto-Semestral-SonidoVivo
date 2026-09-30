@@ -18,9 +18,17 @@ src/
 ├── components/
 │   ├── atoms/
 │   │   ├── Boton.jsx
-│   │   └── InputTexto.jsx
+│   │   ├── ContadorCantidad.jsx
+│   │   ├── EtiquetaStock.jsx
+│   │   ├── InputTexto.jsx
+│   │   ├── Precio.jsx
+│   │   └── Selector.jsx
 │   ├── molecules/
-│   │   └── CampoFormulario.jsx
+│   │   ├── CampoFormulario.jsx
+│   │   ├── EstadoPedido.jsx
+│   │   ├── FiltroCategoria.jsx
+│   │   ├── ItemCarrito.jsx
+│   │   └── TarjetaProducto.jsx
 │   ├── organisms/
 │   │   └── FormularioLogin.jsx
 │   └── templates/
