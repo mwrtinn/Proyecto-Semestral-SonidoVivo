@@ -1,53 +1,40 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, Container, Badge, Button } from 'react-bootstrap';
 
-function Navbar() {
+function BarraNavegacion() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-      <div className="container">
-        <a className="navbar-brand fw-bold fs-4" href="/">
+    <Navbar bg="dark" variant="dark" expand="lg" className="shadow-sm">
+      <Container>
+        <Navbar.Brand as={Link} to="/" className="fw-bold fs-4">
           Sonido Vivo
-        </a>
-        
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#menuNavegacion"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        
-        <div className="collapse navbar-collapse" id="menuNavegacion">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" href="/">Inicio</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/catalogo">Catálogo</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/luthier">Servicio de Luthier</a>
-            </li>
-          </ul>
-          
-          <div className="d-flex align-items-center gap-4">
-            {/* Enlace para cumplir con el requisito de Autenticación de la capa de Seguridad */}
-            <a href="/login" className="text-light text-decoration-none small fw-bold">
+        </Navbar.Brand>
+       
+        <Navbar.Toggle aria-controls="menu-navegacion" />
+       
+        <Navbar.Collapse id="menu-navegacion">
+          <Nav className="me-auto mb-2 mb-lg-0">
+            <Nav.Link as={Link} to="/">Inicio</Nav.Link>
+            <Nav.Link as={Link} to="/catalogo">Catálogo</Nav.Link>
+            <Nav.Link as={Link} to="/luthier">Servicio de Luthier</Nav.Link>
+          </Nav>
+         
+          <div className="d-flex align-items-center gap-4 mt-3 mt-lg-0">
+            <Link to="/login" className="text-light text-decoration-none small fw-bold">
               <i className="bi bi-person-circle me-1"></i> Iniciar Sesión
-            </a>
-            
-            <button className="btn btn-outline-light position-relative">
+            </Link>
+           
+            <Button variant="outline-light" className="position-relative">
               <i className="bi bi-cart3 me-2"></i>
               Carrito
-              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <Badge bg="danger" pill className="position-absolute top-0 start-100 translate-middle">
                 0
-              </span>
-            </button>
+              </Badge>
+            </Button>
           </div>
-        </div>
-      </div>
-    </nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 
-export default Navbar;
+export default BarraNavegacion;
