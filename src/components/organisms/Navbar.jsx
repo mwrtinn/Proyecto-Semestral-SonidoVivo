@@ -15,7 +15,6 @@ function BarraNavegacion() {
           <Nav className="me-auto mb-2 mb-lg-0">
             <Nav.Link as={Link} to="/">Inicio</Nav.Link>
             <Nav.Link as={Link} to="/catalogo">Catálogo</Nav.Link>
-            <Nav.Link as={Link} to="/luthier">Servicio de Luthier</Nav.Link>
           </Nav>
          
           <div className="d-flex align-items-center gap-4 mt-3 mt-lg-0">
