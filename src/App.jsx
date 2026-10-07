@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Inicio from "./pages/Inicio";
 import Catalogo from "./pages/Catalogo";
 import Login from "./pages/Login";
+import Categorias from "./pages/Categorias";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         
         {/* Ruta del Login */}
         <Route path="/login" element={<Login />} />
+
+        {/* Ruta de Categorias */}
+        <Route path="/categorias" element={<Categorias />} />
       </Routes>
     </BrowserRouter>
   );
