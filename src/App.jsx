@@ -3,6 +3,7 @@ import Inicio from "./pages/Inicio";
 import Catalogo from "./pages/Catalogo";
 import Login from "./pages/Login";
 import Categorias from "./pages/Categorias";
+import Ofertas from "./pages/Ofertas"
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
 
         {/* Ruta de Categorias */}
         <Route path="/categorias" element={<Categorias />} />
+
+        {/* Ruta de Ofertas */}
+        <Route path="/ofertas" element={<Ofertas />} />
       </Routes>
     </BrowserRouter>
   );
