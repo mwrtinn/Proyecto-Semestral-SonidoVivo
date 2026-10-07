@@ -1,8 +1,9 @@
+import { Form } from 'react-bootstrap';
+
 function InputTexto(props) {
   return (
-    <input
+    <Form.Control
       type={props.tipo || "text"}
-      className="form-control"
       placeholder={props.placeholder}
     />
   );
