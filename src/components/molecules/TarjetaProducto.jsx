@@ -1,33 +1,45 @@
+import { Card, Button } from 'react-bootstrap';
 import Precio from '../atoms/Precio';
 import EtiquetaStock from '../atoms/EtiquetaStock';
+import imagenGenerica from '../../assets/img/Productos.webp';
 
-function TarjetaProducto({ nombre, descripcion, precio, stock, imagenUrl }) {
+function TarjetaProducto(props) {
+  const clasesExtra = props.className || "";
+  const stock = props.stock || 0;
+
+  const rutaImagen = props.imagen || imagenGenerica;
+
   return (
-    <div className="card h-100 shadow-sm border-0">
-      <img 
-        src={imagenUrl || "https://via.placeholder.com/300x200?text=Instrumento"} 
-        className="card-img-top" 
-        alt={nombre} 
-        style={{ height: '200px', objectFit: 'cover' }}
-      />
-      <div className="card-body d-flex flex-column">
-        <h5 className="card-title fw-bold">{nombre}</h5>
-        <p className="card-text text-muted small">{descripcion}</p>
-        <div className="mt-auto">
-          <div className="d-flex justify-content-between align-items-center mb-3">
-            <Precio valor={precio} />
-            <EtiquetaStock cantidad={stock} />
-          </div>
-          <button 
-            className="btn btn-dark w-100" 
-            disabled={stock <= 0}
-          >
-            <i className="bi bi-cart-plus me-2"></i>
-            {stock > 0 ? 'Agregar al Carrito' : 'Agotado'}
-          </button>
-        </div>
+    <Card className={`h-100 shadow-sm border-0 ${clasesExtra}`}>
+      <div style={{ height: "200px", overflow: "hidden" }}>
+        <Card.Img
+          variant="top"
+          src={rutaImagen}
+          alt={props.nombre}
+          style={{ height: "100%", width: "100%", objectFit: "cover" }}
+        />
       </div>
-    </div>
+      <Card.Body className="d-flex flex-column">
+        <Card.Title className="fs-5 fw-bold">{props.nombre}</Card.Title>
+        <Card.Text className="text-muted small flex-grow-1">
+          {props.descripcion}
+        </Card.Text>
+        
+        <div className="d-flex justify-content-between align-items-center mb-3 mt-auto">
+          <Precio valor={props.precio} />
+          <EtiquetaStock cantidad={stock} />
+        </div>
+        
+        <Button
+          variant="dark"
+          className="w-100"
+          disabled={stock <= 0}
+        >
+          <i className="bi bi-cart-plus me-2"></i>
+          {stock > 0 ? 'Agregar al Carrito' : 'Agotado'}
+        </Button>
+      </Card.Body>
+    </Card>
   );
 }
 

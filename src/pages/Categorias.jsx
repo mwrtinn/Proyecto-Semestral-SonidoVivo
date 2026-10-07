@@ -25,6 +25,7 @@ function Categorias() {
         <h2 className="text-center mb-4">Explorar por Categorías</h2>
         
         <FiltroCategoria 
+          className="mb-4"
           categorias={categoriasUnicas}
           categoriaSeleccionada={categoriaActiva}
           onCambiarCategoria={manejarCambio}

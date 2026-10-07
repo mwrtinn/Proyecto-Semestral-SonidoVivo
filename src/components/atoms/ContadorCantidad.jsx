@@ -1,19 +1,20 @@
-function ContadorCantidad({ cantidad, onIncrementar, onDecrementar }) {
+function ContadorCantidad(props) {
+  const cantidad = props.cantidad || 0;
+  const clasesExtra = props.className || "";
+
   return (
-    <div className="d-flex align-items-center gap-2">
-      <button 
-        className="btn btn-outline-secondary btn-sm" 
-        onClick={onDecrementar}
-        disabled={cantidad <= 1} // Evita que bajen a 0 o negativo desde aquí
+    <div className={`d-flex align-items-center gap-2 ${clasesExtra}`}>
+      <button
+        className="btn btn-outline-secondary btn-sm"
+        onClick={props.onDecrementar}
+        disabled={cantidad <= 1} 
       >
         -
       </button>
-      
       <span className="fw-bold px-2">{cantidad}</span>
-      
-      <button 
-        className="btn btn-outline-secondary btn-sm" 
-        onClick={onIncrementar}
+      <button
+        className="btn btn-outline-secondary btn-sm"
+        onClick={props.onIncrementar}
       >
         +
       </button>
