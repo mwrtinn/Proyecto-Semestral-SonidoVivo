@@ -8,7 +8,9 @@
     "modelo": "F310",
     "stock": 8,
     "precio": 129990,
-    "descripcion": "Tapa de abeto, aros y fondo de meranti. Ideal para iniciantes."
+    "descripcion": "Tapa de abeto, aros y fondo de meranti. Ideal para iniciantes.",
+    "enOferta": true,
+    "descuento": 15
   },
   {
     "id": 2,
@@ -19,7 +21,9 @@
     "modelo": "CD-60S",
     "stock": 5,
     "precio": 189990,
-    "descripcion": "Tapa de abeto macizo, brazo de caoba. Sonido cálido y proyectado."
+    "descripcion": "Tapa de abeto macizo, brazo de caoba. Sonido cálido y proyectado.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 3,
@@ -30,7 +34,9 @@
     "modelo": "C40",
     "stock": 10,
     "precio": 89990,
-    "descripcion": "Nailon, tapa de abeto. Ideal para estudio y flamenco."
+    "descripcion": "Nailon, tapa de abeto. Ideal para estudio y flamenco.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 4,
@@ -41,7 +47,9 @@
     "modelo": "GD11MCE",
     "stock": 3,
     "precio": 299990,
-    "descripcion": "Cuerpo de caoba, preamplificador TP-4T. Tono rico y versátil."
+    "descripcion": "Cuerpo de caoba, preamplificador TP-4T. Tono rico y versátil.",
+    "enOferta": true,
+    "descuento": 10
   },
   {
     "id": 5,
@@ -52,7 +60,9 @@
     "modelo": "Baby Taylor BT1",
     "stock": 2,
     "precio": 389990,
-    "descripcion": "Tamaño 3/4, tapa de abeto. Perfecta para viajes o niños."
+    "descripcion": "Tamaño 3/4, tapa de abeto. Perfecta para viajes o niños.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 6,
@@ -63,7 +73,9 @@
     "modelo": "Affinity",
     "stock": 6,
     "precio": 249990,
-    "descripcion": "Tres pastillas single-coil, puente con trémolo. Tono clásico."
+    "descripcion": "Tres pastillas single-coil, puente con trémolo. Tono clásico.",
+    "enOferta": true,
+    "descuento": 20
   },
   {
     "id": 7,
@@ -74,7 +86,9 @@
     "modelo": "Les Paul Standard",
     "stock": 4,
     "precio": 549990,
-    "descripcion": "Cuerpo de caoba, dos pastillas humbucker. Sonido potente y cálido."
+    "descripcion": "Cuerpo de caoba, dos pastillas humbucker. Sonido potente y cálido.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 8,
@@ -85,7 +99,9 @@
     "modelo": "Player Telecaster",
     "stock": 3,
     "precio": 789990,
-    "descripcion": "Dos pastillas single-coil Player Series. Tono brillante y definido."
+    "descripcion": "Dos pastillas single-coil Player Series. Tono brillante y definido.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 9,
@@ -96,7 +112,9 @@
     "modelo": "SG Standard",
     "stock": 1,
     "precio": 1490000,
-    "descripcion": "Perfil de mástil redondeado, humbuckers 490R y 490T. Clásico del rock."
+    "descripcion": "Perfil de mástil redondeado, humbuckers 490R y 490T. Clásico del rock.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 10,
@@ -107,7 +125,9 @@
     "modelo": "Artcore AS73",
     "stock": 2,
     "precio": 429990,
-    "descripcion": "Cuerpo de tilo, pastillas Classic Elite. Ideal para jazz y blues."
+    "descripcion": "Cuerpo de tilo, pastillas Classic Elite. Ideal para jazz y blues.",
+    "enOferta": true,
+    "descuento": 15
   },
   {
     "id": 11,
@@ -118,7 +138,9 @@
     "modelo": "Affinity P Bass",
     "stock": 5,
     "precio": 269990,
-    "descripcion": "Pastilla split single-coil. Tono contundente y fácil de tocar."
+    "descripcion": "Pastilla split single-coil. Tono contundente y fácil de tocar.",
+    "enOferta": true,
+    "descuento": 10
   },
   {
     "id": 12,
@@ -129,7 +151,9 @@
     "modelo": "Player Jazz Bass",
     "stock": 2,
     "precio": 819990,
-    "descripcion": "Dos pastillas single-coil Player Series. Sonido claro y versátil."
+    "descripcion": "Dos pastillas single-coil Player Series. Sonido claro y versátil.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 13,
@@ -140,7 +164,9 @@
     "modelo": "TRBX305",
     "stock": 3,
     "precio": 459990,
-    "descripcion": "Cuerpo de caoba, ecualizador activo. Excelente definición de graves."
+    "descripcion": "Cuerpo de caoba, ecualizador activo. Excelente definición de graves.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 14,
@@ -151,7 +177,9 @@
     "modelo": "PCBE12MH",
     "stock": 2,
     "precio": 229990,
-    "descripcion": "Cuerpo de okoume. Tono acústico profundo con preamplificador."
+    "descripcion": "Cuerpo de okoume. Tono acústico profundo con preamplificador.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 15,
@@ -162,7 +190,9 @@
     "modelo": "G2220 Electromatic",
     "stock": 4,
     "precio": 349990,
-    "descripcion": "Escala de 30\", dos mini-humbuckers. Cómodo y con gran sonido vintage."
+    "descripcion": "Escala de 30\", dos mini-humbuckers. Cómodo y con gran sonido vintage.",
+    "enOferta": true,
+    "descuento": 25
   },
   {
     "id": 16,
@@ -173,7 +203,9 @@
     "modelo": "Roadshow",
     "stock": 3,
     "precio": 549990,
-    "descripcion": "Incluye platillos, herrajes y sillín. Lista para tocar."
+    "descripcion": "Incluye platillos, herrajes y sillín. Lista para tocar.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 17,
@@ -184,7 +216,9 @@
     "modelo": "Nitro Mesh Kit",
     "stock": 4,
     "precio": 399990,
-    "descripcion": "Parches de malla para una respuesta natural y silenciosa. 40 kits."
+    "descripcion": "Parches de malla para una respuesta natural y silenciosa. 40 kits.",
+    "enOferta": true,
+    "descuento": 25
   },
   {
     "id": 18,
@@ -195,7 +229,9 @@
     "modelo": "HCAJ1NT",
     "stock": 6,
     "precio": 129990,
-    "descripcion": "Superficie de madera de caucho, sistema de cuerdas interno."
+    "descripcion": "Superficie de madera de caucho, sistema de cuerdas interno.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 19,
@@ -206,7 +242,9 @@
     "modelo": "Planet Z",
     "stock": 5,
     "precio": 189990,
-    "descripcion": "Aleación de latón, sonido brillante y definido. Ideal iniciantes."
+    "descripcion": "Aleación de latón, sonido brillante y definido. Ideal iniciantes.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 20,
@@ -217,7 +255,9 @@
     "modelo": "Freestyle II",
     "stock": 7,
     "precio": 95000,
-    "descripcion": "Cuerpo sintético ligero, parche resistente a cambios climáticos."
+    "descripcion": "Cuerpo sintético ligero, parche resistente a cambios climáticos.",
+    "enOferta": true,
+    "descuento": 15
   },
   {
     "id": 21,
@@ -228,7 +268,9 @@
     "modelo": "CT-S300",
     "stock": 8,
     "precio": 159990,
-    "descripcion": "Teclas sensibles al tacto, 400 tonos, rueda de pitch bend."
+    "descripcion": "Teclas sensibles al tacto, 400 tonos, rueda de pitch bend.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 22,
@@ -239,7 +281,9 @@
     "modelo": "P-45",
     "stock": 4,
     "precio": 489990,
-    "descripcion": "Teclado con acción de martillo graduado estándar (GHS). Sonido realista."
+    "descripcion": "Teclado con acción de martillo graduado estándar (GHS). Sonido realista.",
+    "enOferta": true,
+    "descuento": 15
   },
   {
     "id": 23,
@@ -250,7 +294,9 @@
     "modelo": "Minilogue",
     "stock": 2,
     "precio": 529990,
-    "descripcion": "Polifonía de 4 voces, secuenciador de 16 pasos, osciloscopio."
+    "descripcion": "Polifonía de 4 voces, secuenciador de 16 pasos, osciloscopio.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 24,
@@ -261,7 +307,9 @@
     "modelo": "KeyLab Essential 49",
     "stock": 5,
     "precio": 199990,
-    "descripcion": "Pads, faders, encoders. Integración perfecta con cualquier DAW."
+    "descripcion": "Pads, faders, encoders. Integración perfecta con cualquier DAW.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 25,
@@ -272,7 +320,9 @@
     "modelo": "GP607",
     "stock": 1,
     "precio": 3500000,
-    "descripcion": "Diseño clásico, tecnología SuperNATURAL, sistema de altavoces de 4.1."
+    "descripcion": "Diseño clásico, tecnología SuperNATURAL, sistema de altavoces de 4.1.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 26,
@@ -283,7 +333,9 @@
     "modelo": "Fly 3",
     "stock": 10,
     "precio": 79990,
-    "descripcion": "Mini amplificador con delay, entrada de línea y salida de audífonos."
+    "descripcion": "Mini amplificador con delay, entrada de línea y salida de audífonos.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 27,
@@ -294,7 +346,9 @@
     "modelo": "Katana-50 MkII",
     "stock": 4,
     "precio": 289990,
-    "descripcion": "5 caracteres de amplificador, 60 efectos integrados. Muy versátil."
+    "descripcion": "5 caracteres de amplificador, 60 efectos integrados. Muy versátil.",
+    "enOferta": true,
+    "descuento": 30
   },
   {
     "id": 28,
@@ -305,7 +359,9 @@
     "modelo": "DSL20HR",
     "stock": 2,
     "precio": 519990,
-    "descripcion": "Tono clásico Marshall, dos canales, loop de efectos."
+    "descripcion": "Tono clásico Marshall, dos canales, loop de efectos.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 29,
@@ -316,7 +372,9 @@
     "modelo": "Rumble 40",
     "stock": 5,
     "precio": 249990,
-    "descripcion": "Ligero, circuito de overdrive, ecualizador de 4 bandas."
+    "descripcion": "Ligero, circuito de overdrive, ecualizador de 4 bandas.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 30,
@@ -327,7 +385,9 @@
     "modelo": "Loudbox Mini",
     "stock": 3,
     "precio": 369990,
-    "descripcion": "Dos canales (instrumento y micro), efectos de reverb y chorus."
+    "descripcion": "Dos canales (instrumento y micro), efectos de reverb y chorus.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 31,
@@ -338,7 +398,9 @@
     "modelo": "SM58",
     "stock": 12,
     "precio": 109990,
-    "descripcion": "El estándar de la industria para voces en vivo. Patrón cardioide."
+    "descripcion": "El estándar de la industria para voces en vivo. Patrón cardioide.",
+    "enOferta": true,
+    "descuento": 15
   },
   {
     "id": 32,
@@ -349,7 +411,9 @@
     "modelo": "AT2020",
     "stock": 8,
     "precio": 99990,
-    "descripcion": "Ideal para grabaciones vocales y acústicas en home studio."
+    "descripcion": "Ideal para grabaciones vocales y acústicas en home studio.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 33,
@@ -360,7 +424,9 @@
     "modelo": "NT-USB Mini",
     "stock": 6,
     "precio": 115000,
-    "descripcion": "Calidad de estudio directo al computador, salida de audífonos sin latencia."
+    "descripcion": "Calidad de estudio directo al computador, salida de audífonos sin latencia.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 34,
@@ -371,7 +437,9 @@
     "modelo": "Drum Set Session I",
     "stock": 2,
     "precio": 320000,
-    "descripcion": "Set de 7 micrófonos (bombo, toms, caja, overheads) con maletín."
+    "descripcion": "Set de 7 micrófonos (bombo, toms, caja, overheads) con maletín.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 35,
@@ -382,7 +450,9 @@
     "modelo": "XSW 1-825",
     "stock": 3,
     "precio": 289990,
-    "descripcion": "Receptor y transmisor de mano con cápsula dinámica e825."
+    "descripcion": "Receptor y transmisor de mano con cápsula dinámica e825.",
+    "enOferta": true,
+    "descuento": 20
   },
   {
     "id": 36,
@@ -393,7 +463,9 @@
     "modelo": "DS-1",
     "stock": 10,
     "precio": 65000,
-    "descripcion": "Distorsión clásica y agresiva, un estándar en pedales."
+    "descripcion": "Distorsión clásica y agresiva, un estándar en pedales.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 37,
@@ -404,7 +476,9 @@
     "modelo": "Flashback 2",
     "stock": 5,
     "precio": 145000,
-    "descripcion": "Múltiples tipos de delay, tecnología MASH, compatible con TonePrint."
+    "descripcion": "Múltiples tipos de delay, tecnología MASH, compatible con TonePrint.",
+    "enOferta": true,
+    "descuento": 20
   },
   {
     "id": 38,
@@ -415,7 +489,9 @@
     "modelo": "Nano Looper 360",
     "stock": 4,
     "precio": 129990,
-    "descripcion": "360 segundos de grabación de loops con 11 bancos de memoria."
+    "descripcion": "360 segundos de grabación de loops con 11 bancos de memoria.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 39,
@@ -426,7 +502,9 @@
     "modelo": "POD Go",
     "stock": 2,
     "precio": 450000,
-    "descripcion": "Modelado de amplificadores y efectos HX de alta calidad."
+    "descripcion": "Modelado de amplificadores y efectos HX de alta calidad.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 40,
@@ -437,7 +515,9 @@
     "modelo": "Cry Baby GCB95",
     "stock": 6,
     "precio": 98000,
-    "descripcion": "El pedal wah original, utilizado por leyendas del rock."
+    "descripcion": "El pedal wah original, utilizado por leyendas del rock.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 41,
@@ -448,7 +528,9 @@
     "modelo": "Pitchclip 2",
     "stock": 25,
     "precio": 15000,
-    "descripcion": "Pantalla LED clara, afinación precisa para múltiples instrumentos."
+    "descripcion": "Pantalla LED clara, afinación precisa para múltiples instrumentos.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 42,
@@ -459,7 +541,9 @@
     "modelo": "Classic Series",
     "stock": 30,
     "precio": 12500,
-    "descripcion": "Baja capacitancia para señal transparente, conectores moldeados."
+    "descripcion": "Baja capacitancia para señal transparente, conectores moldeados.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 43,
@@ -470,7 +554,9 @@
     "modelo": "GS414B PLUS",
     "stock": 15,
     "precio": 45000,
-    "descripcion": "Sistema Auto Grip, altura ajustable, seguro para todo tipo de acabados."
+    "descripcion": "Sistema Auto Grip, altura ajustable, seguro para todo tipo de acabados.",
+    "enOferta": true,
+    "descuento": 10
   },
   {
     "id": 44,
@@ -481,7 +567,9 @@
     "modelo": "Regular Slinky",
     "stock": 50,
     "precio": 7900,
-    "descripcion": "Calibre 10-46, níquel entorchado. Tono balanceado."
+    "descripcion": "Calibre 10-46, níquel entorchado. Tono balanceado.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 45,
@@ -492,7 +580,9 @@
     "modelo": "M8HT",
     "stock": 20,
     "precio": 18500,
-    "descripcion": "Tejido jacquard, 2 pulgadas de ancho, puntas de cuero."
+    "descripcion": "Tejido jacquard, 2 pulgadas de ancho, puntas de cuero.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 46,
@@ -503,7 +593,9 @@
     "modelo": "Scarlett 2i2 3rd Gen",
     "stock": 8,
     "precio": 169990,
-    "descripcion": "2 entradas, 2 salidas, preamplificadores con modo Air."
+    "descripcion": "2 entradas, 2 salidas, preamplificadores con modo Air.",
+    "enOferta": true,
+    "descuento": 15
   },
   {
     "id": 47,
@@ -514,7 +606,9 @@
     "modelo": "305P MkII",
     "stock": 4,
     "precio": 299990,
-    "descripcion": "Monitores autoamplificados de 5 pulgadas. Respuesta plana y precisa."
+    "descripcion": "Monitores autoamplificados de 5 pulgadas. Respuesta plana y precisa.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 48,
@@ -525,7 +619,9 @@
     "modelo": "ATH-M50x",
     "stock": 6,
     "precio": 159990,
-    "descripcion": "Diseño cerrado, drivers de 45mm, cables desmontables."
+    "descripcion": "Diseño cerrado, drivers de 45mm, cables desmontables.",
+    "enOferta": true,
+    "descuento": 25
   },
   {
     "id": 49,
@@ -536,7 +632,9 @@
     "modelo": "Big Knob Passive",
     "stock": 3,
     "precio": 75000,
-    "descripcion": "Control de volumen pasivo, selección de dos fuentes y dos pares de monitores."
+    "descripcion": "Control de volumen pasivo, selección de dos fuentes y dos pares de monitores.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 50,
@@ -547,7 +645,9 @@
     "modelo": "Studiofoam Wedges",
     "stock": 5,
     "precio": 85000,
-    "descripcion": "Espuma acústica de 2 pulgadas para controlar reflexiones en la sala."
+    "descripcion": "Espuma acústica de 2 pulgadas para controlar reflexiones en la sala.",
+    "enOferta": false,
+    "descuento": 0
   },
   {
     "id": 51,
@@ -558,6 +658,8 @@
     "modelo": "Live 11 Standard",
     "stock": 10,
     "precio": 390000,
-    "descripcion": "Licencia digital. Herramientas avanzadas de producción y edición musical."
+    "descripcion": "Licencia digital. Herramientas avanzadas de producción y edición musical.",
+    "enOferta": false,
+    "descuento": 0
   }
 ]
