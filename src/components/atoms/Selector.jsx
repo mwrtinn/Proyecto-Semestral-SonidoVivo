@@ -1,13 +1,16 @@
-function Selector({ opciones, valorSeleccionado, onChange }) {
+function Selector(props) {
+  const opciones = props.opciones || [];
+  const clasesExtra = props.className || "";
+  const textoPorDefecto = props.textoPorDefecto || "Selecciona una opción...";
+
   return (
-    <select 
-      className="form-select" 
-      value={valorSeleccionado} 
-      onChange={onChange}
+    <select
+      className={`form-select ${clasesExtra}`}
+      value={props.valorSeleccionado}
+      onChange={props.onChange}
     >
-      <option value="">Selecciona una categoría...</option>
+      <option value="">{textoPorDefecto}</option>
       
-      {/* Recorremos la lista de opciones que llegue desde afuera */}
       {opciones.map((opcion, index) => (
         <option key={index} value={opcion}>
           {opcion}

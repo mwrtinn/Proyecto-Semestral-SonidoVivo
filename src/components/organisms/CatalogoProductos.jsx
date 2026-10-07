@@ -2,9 +2,11 @@ import TarjetaProducto from '../molecules/TarjetaProducto';
 import { Container, Row, Col } from 'react-bootstrap';
 import productosBD from '../../data/productos.json';
 
-function CatalogoProductos() {
+function CatalogoProductos(props) {
+  const clasesExtra = props.className || "";
+
   return (
-    <Container className="my-5">
+    <Container className={clasesExtra}>
       <h2 className="text-center mb-4">Nuestro Catálogo</h2>
       <Row className="g-4">
         {productosBD.map((producto) => (
@@ -14,6 +16,7 @@ function CatalogoProductos() {
               descripcion={producto.descripcion}
               precio={producto.precio}
               stock={producto.stock}
+              categoria={producto.categoria}
             />
           </Col>
         ))}
