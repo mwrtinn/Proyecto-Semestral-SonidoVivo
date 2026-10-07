@@ -2,7 +2,7 @@
 
 ## Integrantes
 - Martin Faundez (ma.faundezd@duocuc.cl)
-- Joaquín Orellana (jo.orellanag@duocuc.cl)
+- Joaquín Orellana (joa.orellanag@duocuc.cl)
 - Vicente Vega (vi.vegaa@duocuc.cl)
 
 ## Caso
@@ -30,10 +30,20 @@ src/
 │   │   ├── ItemCarrito.jsx
 │   │   └── TarjetaProducto.jsx
 │   ├── organisms/
-│   │   └── FormularioLogin.jsx
+│   │   ├── CatalogoProductos.jsx
+│   │   ├── Footer.jsx
+│   │   ├── FormularioLogin.jsx
+│   │   └── Navbar.jsx
 │   └── templates/
-└── pages/
-    └── Login.jsx
+│       └── PlantillaPublica.jsx
+├── data/
+│   └── productos.json
+├── pages/
+│   ├── Catalogo.jsx
+│   ├── Inicio.jsx
+│   └── Login.jsx
+├── App.jsx
+└── main.jsx
 ```
 
 ## Tecnologías
