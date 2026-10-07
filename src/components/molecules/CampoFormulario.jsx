@@ -1,14 +1,15 @@
-import InputTexto from "../atoms/InputTexto";
+import { Form } from 'react-bootstrap';
+import InputTexto from '../atoms/InputTexto';
 
 function CampoFormulario(props) {
   return (
-    <div className="mb-3">
-      <label className="form-label fw-bold">{props.etiqueta}</label>
-      <InputTexto 
-        tipo={props.tipo} 
-        placeholder={props.placeholder} 
+    <Form.Group className="mb-3">
+      <Form.Label className="fw-bold">{props.etiqueta}</Form.Label>
+      <InputTexto
+        tipo={props.tipo}
+        placeholder={props.placeholder}
       />
-    </div>
+    </Form.Group>
   );
 }
 
