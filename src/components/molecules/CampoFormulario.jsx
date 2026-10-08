@@ -1,16 +1,22 @@
 import { Form } from 'react-bootstrap';
-import InputTexto from '../atoms/InputTexto';
 
 function CampoFormulario(props) {
   const clasesExtra = props.className || "";
+  const error = props.error || "";
 
   return (
     <Form.Group className={clasesExtra}>
       <Form.Label className="fw-bold">{props.etiqueta}</Form.Label>
-      <InputTexto
-        tipo={props.tipo}
+      <Form.Control
+        type={props.tipo}
         placeholder={props.placeholder}
+        value={props.valor}
+        onChange={(e) => props.onChange(e.target.value)}
+        isInvalid={error !== ''}
       />
+      <Form.Control.Feedback type="invalid">
+        {error}
+      </Form.Control.Feedback>
     </Form.Group>
   );
 }

@@ -1,31 +1,33 @@
-import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container, Badge, Button } from 'react-bootstrap';
+import { Navbar as BarraBootstrap, Nav, Container, Badge, Button } from 'react-bootstrap';
 
-function BarraNavegacion(props) {
+function Navbar(props) {
   const clasesExtra = props.className || "";
 
+  function ir(evento, ruta) {
+    evento.preventDefault();
+    if (props.onNavegar) {
+      props.onNavegar(ruta);
+    }
+  }
+
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className={`shadow-sm ${clasesExtra}`}>
+    <BarraBootstrap bg="dark" variant="dark" expand="lg" className={`shadow-sm ${clasesExtra}`}>
       <Container>
-        <Navbar.Brand as={Link} to="/" className="fw-bold fs-4">
+        <BarraBootstrap.Brand href="/" onClick={(e) => ir(e, '/')} className="fw-bold fs-4">
           Sonido Vivo
-        </Navbar.Brand>
-        
-        <Navbar.Toggle aria-controls="menu-navegacion" />
-        
-        <Navbar.Collapse id="menu-navegacion">
+        </BarraBootstrap.Brand>
+        <BarraBootstrap.Toggle aria-controls="menu-navegacion" />
+        <BarraBootstrap.Collapse id="menu-navegacion">
           <Nav className="me-auto mb-2 mb-lg-0">
-            <Nav.Link as={Link} to="/">Inicio</Nav.Link>
-            <Nav.Link as={Link} to="/catalogo">Catálogo</Nav.Link>
-            <Nav.Link as={Link} to="/categorias">Categorías</Nav.Link>
-            <Nav.Link as={Link} to="/ofertas">Ofertas</Nav.Link>
+            <Nav.Link href="/" onClick={(e) => ir(e, '/')}>Inicio</Nav.Link>
+            <Nav.Link href="/catalogo" onClick={(e) => ir(e, '/catalogo')}>Catálogo</Nav.Link>
+            <Nav.Link href="/categorias" onClick={(e) => ir(e, '/categorias')}>Categorías</Nav.Link>
+            <Nav.Link href="/ofertas" onClick={(e) => ir(e, '/ofertas')}>Ofertas</Nav.Link>
           </Nav>
-          
           <div className="d-flex align-items-center gap-4 mt-3 mt-lg-0">
-            <Link to="/login" className="text-light text-decoration-none small fw-bold">
+            <a href="/login" onClick={(e) => ir(e, '/login')} className="text-light text-decoration-none small fw-bold">
               <i className="bi bi-person-circle me-1"></i> Iniciar Sesión
-            </Link>
-            
+            </a>
             <Button variant="outline-light" className="position-relative">
               <i className="bi bi-cart3 me-2"></i>
               Carrito
@@ -34,10 +36,10 @@ function BarraNavegacion(props) {
               </Badge>
             </Button>
           </div>
-        </Navbar.Collapse>
+        </BarraBootstrap.Collapse>
       </Container>
-    </Navbar>
+    </BarraBootstrap>
   );
 }
 
-export default BarraNavegacion;
+export default Navbar;
