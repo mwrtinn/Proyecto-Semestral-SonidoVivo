@@ -17,6 +17,8 @@ function CatalogoProductos(props) {
               precio={producto.precio}
               stock={producto.stock}
               categoria={producto.categoria}
+              imagen={producto.imagen}
+              onVerDetalle={() => props.onVerDetalle(producto.id)}
             />
           </Col>
         ))}

@@ -3,7 +3,8 @@ import Inicio from "./pages/Inicio";
 import Catalogo from "./pages/Catalogo";
 import Login from "./pages/Login";
 import Categorias from "./pages/Categorias";
-import Ofertas from "./pages/Ofertas"
+import Ofertas from "./pages/Ofertas";
+import DetalleProducto from './pages/DetalleProducto'
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
 
         {/* Ruta de Ofertas */}
         <Route path="/ofertas" element={<Ofertas />} />
+
+        {/* Ruta de Detalle de Producto */}
+        <Route path="/producto/:id" element={<DetalleProducto />} />
       </Routes>
     </BrowserRouter>
   );

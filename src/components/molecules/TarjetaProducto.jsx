@@ -1,4 +1,5 @@
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap'; 
+import Boton from '../atoms/Boton'; 
 import Precio from '../atoms/Precio';
 import EtiquetaStock from '../atoms/EtiquetaStock';
 import imagenGenerica from '../../assets/img/Productos.webp';
@@ -6,7 +7,6 @@ import imagenGenerica from '../../assets/img/Productos.webp';
 function TarjetaProducto(props) {
   const clasesExtra = props.className || "";
   const stock = props.stock || 0;
-
   const rutaImagen = props.imagen || imagenGenerica;
 
   return (
@@ -30,14 +30,19 @@ function TarjetaProducto(props) {
           <EtiquetaStock cantidad={stock} />
         </div>
         
-        <Button
-          variant="dark"
-          className="w-100"
-          disabled={stock <= 0}
-        >
-          <i className="bi bi-cart-plus me-2"></i>
-          {stock > 0 ? 'Agregar al Carrito' : 'Agotado'}
-        </Button>
+        <div className="d-grid gap-2 mt-auto">
+          <Boton
+            variante="outline-dark"
+            onClick={props.onVerDetalle}
+            texto="Ver Detalle"
+          />
+          
+          <Boton
+            variante="dark"
+            disabled={stock <= 0}
+            texto={stock > 0 ? 'Agregar al Carrito' : 'Agotado'}
+          />
+        </div>
       </Card.Body>
     </Card>
   );
