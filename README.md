@@ -13,7 +13,7 @@ Tienda en línea dedicada a la venta de instrumentos musicales y accesorios de a
 
 ## Estructura del proyecto
 
-\`\`\`text
+```text
 src/
 ├── components/
 │   ├── atoms/
@@ -56,7 +56,7 @@ src/
 │   └── validaciones.js
 ├── App.jsx
 └── main.jsx
-\`\`\`
+```
 
 ## Tecnologías
 - React + Vite
@@ -66,9 +66,9 @@ src/
 
 ## Cómo ejecutar el proyecto
 1. Instalar las dependencias:
-   \`npm install\`
+   `npm install`
 2. Iniciar el servidor de desarrollo:
-   \`npm run dev\`
+   `npm run dev`
 
 ## Material complementario
 Carpeta de Drive con documentos del semestre (ERS y otros):
@@ -94,4 +94,4 @@ El desarrollo de este proyecto se distribuyó aplicando la metodología de Atomi
     *   **Vistas Promocionales:** Creación de la página dedicada de `Ofertas` de la Semana 9.
 
 *   **Joaquín Orellana (`CIGGY-1`)**
- 
+    
