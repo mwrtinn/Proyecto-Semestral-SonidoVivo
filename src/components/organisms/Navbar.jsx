@@ -1,7 +1,9 @@
 import { Navbar as BarraBootstrap, Nav, Container, Badge, Button } from 'react-bootstrap';
+import { useCarrito } from '../../context/CartContext';
 
 function Navbar(props) {
   const clasesExtra = props.className || "";
+  const { totalFisico } = useCarrito();
 
   function ir(evento, ruta) {
     evento.preventDefault();
@@ -28,11 +30,11 @@ function Navbar(props) {
             <a href="/login" onClick={(e) => ir(e, '/login')} className="text-light text-decoration-none small fw-bold">
               <i className="bi bi-person-circle me-1"></i> Iniciar Sesión
             </a>
-            <Button variant="outline-light" className="position-relative">
+            <Button variant="outline-light" className="position-relative" onClick={(e) => ir(e, '/carrito')}>
               <i className="bi bi-cart3 me-2"></i>
               Carrito
               <Badge bg="danger" pill className="position-absolute top-0 start-100 translate-middle">
-                0
+                {totalFisico}
               </Badge>
             </Button>
           </div>

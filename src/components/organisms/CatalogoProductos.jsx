@@ -1,24 +1,25 @@
-import TarjetaProducto from '../molecules/TarjetaProducto';
 import { Container, Row, Col } from 'react-bootstrap';
-import productosBD from '../../data/productos.json';
+import TarjetaProducto from '../molecules/TarjetaProducto';
+import { useCarrito } from '../../context/CartContext';
+import productosBD from '../../data/productos.json'; 
 
 function CatalogoProductos(props) {
-  const clasesExtra = props.className || "";
+  const productos = props.productos || productosBD; 
+  const { agregarAlCarrito } = useCarrito(); 
 
   return (
-    <Container className={clasesExtra}>
-      <h2 className="text-center mb-4">Nuestro Catálogo</h2>
-      <Row className="g-4">
-        {productosBD.map((producto) => (
-          <Col xs={12} md={6} lg={4} key={producto.id}>
+    <Container className="my-4">
+      <Row xs={1} md={2} lg={3} className="g-4">
+        {productos.map((producto) => (
+          <Col key={producto.id}>
             <TarjetaProducto
               nombre={producto.nombre}
               descripcion={producto.descripcion}
               precio={producto.precio}
               stock={producto.stock}
-              categoria={producto.categoria}
               imagen={producto.imagen}
-              onVerDetalle={() => props.onVerDetalle(producto.id)}
+              onVerDetalle={() => props.onVerDetalle(producto.id)} 
+              onAgregarCarrito={() => agregarAlCarrito(producto)} 
             />
           </Col>
         ))}

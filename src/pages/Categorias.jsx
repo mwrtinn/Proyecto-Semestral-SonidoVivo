@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import PlantillaPublica from '../components/templates/PlantillaPublica';
 import FiltroCategoria from '../components/molecules/FiltroCategoria';
 import TarjetaProducto from '../components/molecules/TarjetaProducto';
 import productosBD from '../data/productos.json';
+import { useCarrito } from '../context/CartContext';
 
 function Categorias() {
-
   const categoriasUnicas = [...new Set(productosBD.map(p => p.categoria))];
-
   const [categoriaActiva, setCategoriaActiva] = useState("");
+  
+  const navigate = useNavigate();
+  const { agregarAlCarrito } = useCarrito();
 
   const manejarCambio = (e) => {
     setCategoriaActiva(e.target.value);
@@ -40,6 +43,9 @@ function Categorias() {
                   descripcion={producto.descripcion}
                   precio={producto.precio}
                   stock={producto.stock}
+                  imagen={producto.imagen}
+                  onVerDetalle={() => navigate(`/producto/${producto.id}`)}
+                  onAgregarCarrito={() => agregarAlCarrito(producto)}
                 />
               </Col>
             ))
