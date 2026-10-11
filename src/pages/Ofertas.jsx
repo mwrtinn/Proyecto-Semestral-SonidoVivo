@@ -1,9 +1,14 @@
 import { Container, Row, Col, Badge } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import PlantillaPublica from '../components/templates/PlantillaPublica';
 import TarjetaProducto from '../components/molecules/TarjetaProducto';
 import productosBD from '../data/productos.json';
+import { useCarrito } from '../context/CartContext';
 
 function Ofertas() {
+  const navigate = useNavigate();
+  const { agregarAlCarrito } = useCarrito();
+
   const productosEnOferta = productosBD.filter(
     (producto) => producto.enOferta === true || (producto.descuento && producto.descuento > 0)
   );
@@ -25,6 +30,11 @@ function Ofertas() {
                 ? Math.round(producto.precio * (1 - producto.descuento / 100))
                 : producto.precio;
 
+              const productoParaCarrito = {
+                ...producto,
+                precio: precioCalculado
+              };
+
               return (
                 <Col xs={12} md={6} lg={4} key={producto.id}>
                   <div className="position-relative">
@@ -42,7 +52,9 @@ function Ofertas() {
                       descripcion={producto.descripcion}
                       precio={precioCalculado}
                       stock={producto.stock}
-                      imagenUrl={producto.imagenUrl}
+                      imagen={producto.imagen}
+                      onVerDetalle={() => navigate(`/producto/${producto.id}`)}
+                      onAgregarCarrito={() => agregarAlCarrito(productoParaCarrito)}
                     />
                   </div>
                 </Col>

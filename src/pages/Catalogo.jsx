@@ -1,16 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import PlantillaPublica from '../components/templates/PlantillaPublica';
 import CatalogoProductos from '../components/organisms/CatalogoProductos';
-import { useTituloPagina } from '../hooks/useTituloPagina';
 
 function Catalogo() {
-  const navigate = useNavigate();
-  useTituloPagina("Catálogo");
+  const navigate = useNavigate(); 
 
   return (
     <PlantillaPublica>
+      <div className="text-center my-4">
+        <h2>Nuestro Catálogo</h2>
+      </div>
+      
       <CatalogoProductos 
-        className="my-5" 
         onVerDetalle={(id) => navigate(`/producto/${id}`)}
       />
     </PlantillaPublica>

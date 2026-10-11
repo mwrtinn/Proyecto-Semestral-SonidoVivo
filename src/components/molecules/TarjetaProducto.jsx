@@ -41,6 +41,7 @@ function TarjetaProducto(props) {
             variante="dark"
             disabled={stock <= 0}
             texto={stock > 0 ? 'Agregar al Carrito' : 'Agotado'}
+            onClick={props.onAgregarCarrito}
           />
         </div>
       </Card.Body>

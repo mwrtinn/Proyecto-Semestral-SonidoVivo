@@ -7,10 +7,12 @@ import Boton from '../components/atoms/Boton';
 import productosBD from '../data/productos.json';
 import imagenGenerica from '../assets/img/Productos.webp';
 import { useTituloPagina } from '../hooks/useTituloPagina';
+import { useCarrito } from '../context/CartContext';
 
 function DetalleProducto() {
   const params = useParams();
   const navigate = useNavigate();
+  const { agregarAlCarrito } = useCarrito();
   
   const id = Number(params.id);
   const producto = productosBD.find((p) => p.id === id);
@@ -78,6 +80,7 @@ function DetalleProducto() {
                 texto={producto.stock > 0 ? "Agregar al Carrito" : "Agotado"} 
                 variante="dark"
                 disabled={producto.stock <= 0}
+                onClick={() => agregarAlCarrito(producto)}
               />
             </div>
           </Col>
