@@ -13,7 +13,7 @@ Tienda en línea dedicada a la venta de instrumentos musicales y accesorios de a
 
 ## Estructura del proyecto
 
-```text
+\`\`\`text
 src/
 ├── components/
 │   ├── atoms/
@@ -30,32 +30,68 @@ src/
 │   │   ├── ItemCarrito.jsx
 │   │   └── TarjetaProducto.jsx
 │   ├── organisms/
+│   │   ├── Carrito.jsx
 │   │   ├── CatalogoProductos.jsx
 │   │   ├── Footer.jsx
 │   │   ├── FormularioLogin.jsx
 │   │   └── Navbar.jsx
 │   └── templates/
 │       └── PlantillaPublica.jsx
+├── context/
+│   └── CartContext.jsx
 ├── data/
 │   └── productos.json
+├── hooks/
+│   └── useTituloPagina.js
 ├── pages/
+│   ├── Carrito.jsx
 │   ├── Catalogo.jsx
+│   ├── Categorias.jsx
+│   ├── DetalleProducto.jsx
 │   ├── Inicio.jsx
-│   └── Login.jsx
+│   ├── Login.jsx
+│   ├── NoEncontrada.jsx
+│   └── Ofertas.jsx
+├── utils/
+│   └── validaciones.js
 ├── App.jsx
 └── main.jsx
-```
+\`\`\`
 
 ## Tecnologías
 - React + Vite
 - React Bootstrap
 - React Router DOM
+- SweetAlert2 (Gestor de notificaciones UI)
 
 ## Cómo ejecutar el proyecto
-npm install
-npm run dev
+1. Instalar las dependencias:
+   \`npm install\`
+2. Iniciar el servidor de desarrollo:
+   \`npm run dev\`
 
 ## Material complementario
 Carpeta de Drive con documentos del semestre (ERS y otros):
-(Link-drive)
+*(Link-drive)*
 
+---
+
+## 👥 Bitácora de Desarrollo y Aportes del Equipo (Metodología Atomic Design)
+
+El desarrollo de este proyecto se distribuyó aplicando la metodología de Atomic Design y el flujo de trabajo en Git. A continuación, el detalle de los aportes basados en el historial del repositorio:
+
+*   **Martín Faundez (`mwrtinn`)**
+    *   **Estructura Base:** Inicialización del proyecto y configuración de Atomic Design.
+    *   **Átomos y Moléculas:** Desarrollo de componentes esenciales (`Precio`, `EtiquetaStock`, `ContadorCantidad`, `Selector`, `Boton` con soporte para tipo `submit`, `ItemCarrito`, `FiltroCategoria`, `TarjetaProducto` genérica y `EstadoPedido`).
+    *   **Páginas Principales:** Creación y conexión de las vistas de `Inicio`, `Catálogo`, `Categorías`, y finalización de la página `DetalleProducto`.
+    *   **Motor del Carrito:** Implementación del contexto global (`CartContext.jsx`), lógica de validación de stock máximo, integración de notificaciones visuales con `SweetAlert2`, y creación de la página/organismo `Carrito`.
+    *   **Ruteo y Validaciones:** Creación de la vista de error 404 (`NoEncontrada`), adición de hook personalizado para títulos (`useTituloPagina`), y configuración de validación básica de login aislando el enrutamiento (`useNavigate`) hacia las Páginas.
+    *   **Mantenimiento:** Creación de data JSON simulada para inventario, correcciones de errores de sintaxis y limpieza general de código CSS.
+
+*   **Vicente Vega (`vishoyo`)**
+    *   **Estructura de Organismos:** Creación de la estructura base para los organismos de navegación y visualización: `Navbar`, `Footer` y `CatalogoProductos`.
+    *   **Plantillas (Templates):** Desarrollo de la plantilla principal (`PlantillaPublica`), responsable de envolver el contenido y unificar la navegación.
+    *   **Vistas Promocionales:** Creación de la página dedicada de `Ofertas` de la Semana 9.
+
+*   **Joaquín Orellana (`CIGGY-1`)**
+ 
