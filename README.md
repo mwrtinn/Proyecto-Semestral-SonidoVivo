@@ -93,6 +93,6 @@ El desarrollo de este proyecto se distribuyó aplicando la metodología de Atomi
     *   **Plantillas (Templates):** Desarrollo de la plantilla principal (`PlantillaPublica`), responsable de envolver el contenido y unificar la navegación.
     *   **Vistas Promocionales:** Creación de la página dedicada de `Ofertas` de la Semana 9.
 
-*   *   **Joaquín Orellana (`CIGGY-1`)**
+*   **Joaquín Orellana (`CIGGY-1`)**
     *   **Organismos y Páginas de Checkout:** Creación de los componentes organizacionales `FormularioCheckout.jsx` y `ResumenCompra.jsx`, junto con la página   principal de `Checkout.jsx` y su respectiva ruta                     para el flujo de pago.
     *   **Validaciones y Lógica:** Implementación del módulo de validaciones (`validaciones.js`) para asegurar el ingreso correcto de campos obligatorios y formato de teléfono en el proceso de compra.
