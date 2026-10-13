@@ -8,6 +8,7 @@ import Ofertas from "./pages/Ofertas";
 import DetalleProducto from './pages/DetalleProducto';
 import Carrito from "./pages/Carrito"; 
 import Checkout from "./pages/Checkout";
+import ResultadoCompra from "./pages/ResultadoCompra";
 import NoEncontrada from "./pages/NoEncontrada";
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
 
           {/* Ruta de Checkout */}
           <Route path="/checkout" element={<Checkout />} />
+
+          {/* Ruta de Compra exitosa */}
+          <Route path="/compra-exitosa" element={<ResultadoCompra />} />
 
           {/*Ruta de Pagina no encontrada 404*/}
           <Route path="*" element={<NoEncontrada />} />

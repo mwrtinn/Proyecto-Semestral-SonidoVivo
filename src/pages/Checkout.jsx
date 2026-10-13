@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-import Swal from 'sweetalert2';
 import PlantillaPublica from '../components/templates/PlantillaPublica';
 import FormularioCheckout from '../components/organisms/FormularioCheckout';
 import ResumenCompra from '../components/organisms/ResumenCompra';
@@ -15,16 +14,23 @@ function Checkout() {
   useTituloPagina("Confirmar pedido");
 
   const confirmarPedido = (datos) => {
+    // Siguiente pieza: aquí se registrará el pedido con pedidoService y bajará el stock.
+    // Por ahora se arma el resumen con lo que hay en el carrito, se vacía el carrito
+    // y se muestra la página de compra exitosa.
+    const pedido = {
+      nombre: datos.nombre,
+      entrega: datos.entrega,
+      direccion: datos.direccion,
+      items: carrito.map((item) => ({
+        id: item.id,
+        nombre: item.nombre,
+        precio: item.precio,
+        cantidad: item.cantidad
+      })),
+      total: totalDinero
+    };
     vaciarCarrito();
-    Swal.fire({
-      icon: 'success',
-      title: '¡Pedido recibido!',
-      text: datos.entrega === 'retiro'
-        ? `Gracias, ${datos.nombre}. Te esperamos en la tienda de Viña del Mar.`
-        : `Gracias, ${datos.nombre}. Lo enviaremos a ${datos.direccion}.`,
-      confirmButtonColor: '#212529'
-    });
-    navigate('/catalogo');
+    navigate('/compra-exitosa', { state: { pedido: pedido } });
   };
 
   if (carrito.length === 0) {
