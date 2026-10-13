@@ -90,8 +90,11 @@ El desarrollo de este proyecto se distribuyó aplicando la metodología de Atomi
 
 *   **Vicente Vega (`vishoyo`)**
     *   **Estructura de Organismos:** Creación de la estructura base para los organismos de navegación y visualización: `Navbar`, `Footer` y `CatalogoProductos`.
+    *   **Creacion de Organismos:** Creacion de Organismo `TablaProductos`.
     *   **Plantillas (Templates):** Desarrollo de la plantilla principal (`PlantillaPublica`), responsable de envolver el contenido y unificar la navegación.
     *   **Vistas Promocionales:** Creación de la página dedicada de `Ofertas` de la Semana 9.
+    *   **Cracion de pagina:** Creacion de pagina `ResultadoCompra`.
+    *   **Mantenimiento:** Actualizacion de pagina `checkout.jsx` y Documento `App`.
 
 *   **Joaquín Orellana (`CIGGY-1`)**
     *   **Organismos y Páginas de Checkout:** Creación de los componentes organizacionales `FormularioCheckout.jsx` y `ResumenCompra.jsx`, junto con la página   principal de `Checkout.jsx` y su respectiva ruta                     para el flujo de pago.
