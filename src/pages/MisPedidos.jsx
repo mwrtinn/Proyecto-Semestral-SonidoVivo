@@ -1,50 +1,33 @@
-import { useNavigate } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
 import PlantillaPublica from '../components/templates/PlantillaPublica';
-import EstadoPedido from '../components/molecules/EstadoPedido';
-import ResumenCompra from '../components/organisms/ResumenCompra';
-import Boton from '../components/atoms/Boton';
-import { usePedidos } from '../context/PedidosContext';
+import FormularioRegistro from '../components/organisms/FormularioRegistro';
 import { useTituloPagina } from '../hooks/useTituloPagina';
-import { ordenarRecientes, formatearFecha } from '../utils/pedidos';
 
-function MisPedidos() {
+function Registro() {
   const navigate = useNavigate();
-  const { pedidos } = usePedidos();
-  useTituloPagina("Mis pedidos");
+  useTituloPagina("Crear cuenta");
 
-  const lista = ordenarRecientes(pedidos);
+  // Por ahora el registro es una simulación: valida el formulario pero no guarda la
+  // cuenta (eso llega con la próxima etapa). Se manda al login con un aviso de éxito.
+  const manejarRegistro = () => {
+    navigate('/login', { state: { registrado: true } });
+  };
 
   return (
     <PlantillaPublica>
       <Container className="my-5">
-        <h2 className="mb-4">Mis pedidos</h2>
-
-        {lista.length === 0 ? (
-          <section className="text-center my-5">
-            <p className="text-muted mb-4">Aún no has realizado pedidos en esta sesión.</p>
-            <Boton texto="Explorar el catálogo" variante="dark" onClick={() => navigate('/catalogo')} />
-          </section>
-        ) : (
-          lista.map((pedido) => (
-            <section key={pedido.id} className="mb-4">
-              <EstadoPedido
-                className="mb-2 bg-white"
-                idPedido={pedido.id}
-                fecha={formatearFecha(pedido.fecha)}
-                estado={pedido.estado}
-              />
-              <ResumenCompra
-                titulo="Detalle del pedido"
-                productos={pedido.items}
-                total={pedido.total}
-              />
-            </section>
-          ))
-        )}
+        <Row className="justify-content-center">
+          <Col xs={12} md={8} lg={5}>
+            <FormularioRegistro onEnviar={manejarRegistro} />
+            <p className="text-center mt-3 mb-0">
+              ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
+            </p>
+          </Col>
+        </Row>
       </Container>
     </PlantillaPublica>
   );
 }
 
-export default MisPedidos;
+export default Registro;

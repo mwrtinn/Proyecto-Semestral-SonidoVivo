@@ -25,6 +25,7 @@ function Navbar(props) {
             <Nav.Link href="/catalogo" onClick={(e) => ir(e, '/catalogo')}>Catálogo</Nav.Link>
             <Nav.Link href="/categorias" onClick={(e) => ir(e, '/categorias')}>Categorías</Nav.Link>
             <Nav.Link href="/ofertas" onClick={(e) => ir(e, '/ofertas')}>Ofertas</Nav.Link>
+            <Nav.Link href="/mis-pedidos" onClick={(e) => ir(e, '/mis-pedidos')}>Mis pedidos</Nav.Link>
           </Nav>
           <div className="d-flex align-items-center gap-4 mt-3 mt-lg-0">
             <a href="/login" onClick={(e) => ir(e, '/login')} className="text-light text-decoration-none small fw-bold">

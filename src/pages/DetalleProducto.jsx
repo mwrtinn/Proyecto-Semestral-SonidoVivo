@@ -4,7 +4,7 @@ import PlantillaPublica from '../components/templates/PlantillaPublica';
 import Precio from '../components/atoms/Precio';
 import EtiquetaStock from '../components/atoms/EtiquetaStock';
 import Boton from '../components/atoms/Boton';
-import productosBD from '../data/productos.json';
+import { useProductos } from '../context/ProductosContext';
 import imagenGenerica from '../assets/img/Productos.webp';
 import { useTituloPagina } from '../hooks/useTituloPagina';
 import { useCarrito } from '../context/CartContext';
@@ -13,9 +13,10 @@ function DetalleProducto() {
   const params = useParams();
   const navigate = useNavigate();
   const { agregarAlCarrito } = useCarrito();
+  const { productos } = useProductos();
   
   const id = Number(params.id);
-  const producto = productosBD.find((p) => p.id === id);
+  const producto = productos.find((p) => p.id === id);
 
   useTituloPagina(producto ? producto.nombre : "Producto no encontrado");
 

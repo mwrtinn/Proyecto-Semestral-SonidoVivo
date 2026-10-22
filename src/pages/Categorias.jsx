@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import PlantillaPublica from '../components/templates/PlantillaPublica';
 import FiltroCategoria from '../components/molecules/FiltroCategoria';
 import TarjetaProducto from '../components/molecules/TarjetaProducto';
-import productosBD from '../data/productos.json';
+import { useProductos } from '../context/ProductosContext';
 import { useCarrito } from '../context/CartContext';
 
 function Categorias() {
-  const categoriasUnicas = [...new Set(productosBD.map(p => p.categoria))];
+  const { productos } = useProductos();
+  const categoriasUnicas = [...new Set(productos.map(p => p.categoria))];
   const [categoriaActiva, setCategoriaActiva] = useState("");
   
   const navigate = useNavigate();
@@ -19,8 +20,8 @@ function Categorias() {
   };
 
   const productosFiltrados = categoriaActiva 
-    ? productosBD.filter(p => p.categoria === categoriaActiva)
-    : productosBD;
+    ? productos.filter(p => p.categoria === categoriaActiva)
+    : productos;
 
   return (
     <PlantillaPublica>
