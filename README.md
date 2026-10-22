@@ -33,12 +33,18 @@ src/
 │   │   ├── Carrito.jsx
 │   │   ├── CatalogoProductos.jsx
 │   │   ├── Footer.jsx
+│   │   ├── FormularioCheckout.jsx
 │   │   ├── FormularioLogin.jsx
-│   │   └── Navbar.jsx
+│   │   ├── FormularioRegistro.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── ResumenCompra.jsx
+│   │   └── TablaProductos.jsx
 │   └── templates/
 │       └── PlantillaPublica.jsx
 ├── context/
-│   └── CartContext.jsx
+│   ├── CartContext.jsx
+│   ├── PedidosContext.jsx
+│   └── ProductosContext.jsx
 ├── data/
 │   └── productos.json
 ├── hooks/
@@ -47,15 +53,21 @@ src/
 │   ├── Carrito.jsx
 │   ├── Catalogo.jsx
 │   ├── Categorias.jsx
+│   ├── Checkout.jsx
 │   ├── DetalleProducto.jsx
 │   ├── Inicio.jsx
 │   ├── Login.jsx
+│   ├── MisPedidos.jsx
 │   ├── NoEncontrada.jsx
-│   └── Ofertas.jsx
+│   ├── Ofertas.jsx
+│   ├── Registro.jsx
+│   └── ResultadoCompra.jsx
 ├── utils/
+│   ├── pedidos.js
+│   ├── stock.js
 │   └── validaciones.js
 ├── App.jsx
-└── main.jsx
+├── main.jsx
 ```
 
 ## Tecnologías
@@ -90,12 +102,18 @@ El desarrollo de este proyecto se distribuyó aplicando la metodología de Atomi
 
 *   **Vicente Vega (`vishoyo`)**
     *   **Estructura de Organismos:** Creación de la estructura base para los organismos de navegación y visualización: `Navbar`, `Footer` y `CatalogoProductos`.
-    *   **Creacion de Organismos:** Creacion de Organismo `TablaProductos`.
+    *   **Creacion de Organismos:** Creacion de Organismo `TablaProductos` y `FormularioRefistro.jsx`
     *   **Plantillas (Templates):** Desarrollo de la plantilla principal (`PlantillaPublica`), responsable de envolver el contenido y unificar la navegación.
     *   **Vistas Promocionales:** Creación de la página dedicada de `Ofertas` de la Semana 9.
-    *   **Cracion de pagina:** Creacion de pagina `ResultadoCompra`.
+    *   **Creacion de pagina:** Creacion de pagina `ResultadoCompra`, `MisPedidos.jsx` y `Registro.jsx` 
     *   **Mantenimiento:** Actualizacion de pagina `checkout.jsx` y Documento `App`.
+    *   **creacion de context:** Creacion de `PedidosContext.jsx`
+    *   **creacion de utils:** creacion de `pedidos.js`
 
 *   **Joaquín Orellana (`CIGGY-1`)**
-    *   **Organismos y Páginas de Checkout:** Creación de los componentes organizacionales `FormularioCheckout.jsx` y `ResumenCompra.jsx`, junto con la página   principal de `Checkout.jsx` y su respectiva ruta                     para el flujo de pago.
-    *   **Validaciones y Lógica:** Implementación del módulo de validaciones (`validaciones.js`) para asegurar el ingreso correcto de campos obligatorios y formato de teléfono en el proceso de compra.
+    *   **Gestión de contexto:** implementación de los contextos globales `CartContext.jsx`, `PedidosContext.jsx` y `ProductosContext.jsx` para el manejo centralizado de estado de aplicacion.
+    *   **Componentes y organismos:** desarrollo de los componentes organizacionales `CatalogoProducto.jsx`, `FormularioRegistro.jsx`, `NavBar.jsx` y `ResumenCompra.jsx`
+    *   **Paginas y vistas:** Creación de las paginas de navegación y flujos de usuario incluyendo `Categorias.jsx`, `Checkout.jsx`, `DetalleProducto.jsx`, `Login.jsx`, `MisPedidos.jsx`,
+    *   `Ofertas.jsx` y `ResultadoCompra.jsx`
+    *   **Utilidades y validaciones:** configuración de modúlos de lógica y soporte `pedidos.js`, `stock.js` y `validaciones.js` para asegurar el correcto funcionamiento de el negocio y
+    *   validacion de datos
