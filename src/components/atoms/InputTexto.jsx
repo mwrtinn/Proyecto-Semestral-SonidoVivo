@@ -1,13 +1,18 @@
-function EtiquetaStock(props) {
-  const cantidad = props.cantidad || 0;
+function InputTexto(props) {
+  const tipo = props.type || "text";
   const clasesExtra = props.className || "";
-  const hayStock = cantidad > 0;
 
   return (
-    <span className={`badge ${hayStock ? 'bg-success' : 'bg-danger'} ${clasesExtra}`}>
-      {hayStock ? `En stock: ${cantidad}` : 'Agotado'}
-    </span>
+    <input
+      type={tipo}
+      className={`form-control ${clasesExtra}`}
+      placeholder={props.placeholder}
+      value={props.valor}
+      onChange={props.onChange}
+      disabled={props.disabled}
+      readOnly={props.readOnly}
+    />
   );
 }
 
-export default EtiquetaStock;
+export default InputTexto;
