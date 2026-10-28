@@ -106,7 +106,7 @@ Generar reporte de cobertura de código:
 
 ## Material complementario
 Carpeta de Drive con documentos del semestre (ERS y otros):
-*(Link-drive)*
+(https://drive.google.com/drive/folders/1jpA6YnjLhmLvg1iVfjsRrCLfc4RPS3vU?usp=drive_link)
 
 ---
 
