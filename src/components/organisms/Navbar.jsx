@@ -1,14 +1,23 @@
 import { Navbar as BarraBootstrap, Nav, Container, Badge, Button } from 'react-bootstrap';
 import { useCarrito } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
 
 function Navbar(props) {
   const clasesExtra = props.className || "";
   const { totalFisico } = useCarrito();
+  const { usuario, cerrarSesion, tieneRol } = useAuth();
 
   function ir(evento, ruta) {
     evento.preventDefault();
     if (props.onNavegar) {
       props.onNavegar(ruta);
+    }
+  }
+
+  function salir() {
+    cerrarSesion();
+    if (props.onNavegar) {
+      props.onNavegar('/');
     }
   }
 
@@ -25,11 +34,23 @@ function Navbar(props) {
             <Nav.Link href="/catalogo" onClick={(e) => ir(e, '/catalogo')}>Catálogo</Nav.Link>
             <Nav.Link href="/categorias" onClick={(e) => ir(e, '/categorias')}>Categorías</Nav.Link>
             <Nav.Link href="/ofertas" onClick={(e) => ir(e, '/ofertas')}>Ofertas</Nav.Link>
+            <Nav.Link href="/mis-pedidos" onClick={(e) => ir(e, '/mis-pedidos')}>Mis pedidos</Nav.Link>
+            {tieneRol('Administrador') && (
+              <Nav.Link href="/admin/usuarios" onClick={(e) => ir(e, '/admin/usuarios')}>Usuarios</Nav.Link>
+            )}
           </Nav>
           <div className="d-flex align-items-center gap-4 mt-3 mt-lg-0">
-            <a href="/login" onClick={(e) => ir(e, '/login')} className="text-light text-decoration-none small fw-bold">
-              <i className="bi bi-person-circle me-1"></i> Iniciar Sesión
-            </a>
+            {usuario ? (
+              <div className="d-flex align-items-center gap-2 text-light small">
+                <span className="fw-bold">{usuario.nombre}</span>
+                <Badge bg="secondary">{usuario.rol}</Badge>
+                <Button variant="outline-light" size="sm" onClick={salir}>Cerrar sesión</Button>
+              </div>
+            ) : (
+              <a href="/login" onClick={(e) => ir(e, '/login')} className="text-light text-decoration-none small fw-bold">
+                <i className="bi bi-person-circle me-1"></i> Iniciar Sesión
+              </a>
+            )}
             <Button variant="outline-light" className="position-relative" onClick={(e) => ir(e, '/carrito')}>
               <i className="bi bi-cart3 me-2"></i>
               Carrito
