@@ -1,38 +1,31 @@
-// PedidosContext: guarda los pedidos de la sesión en el estado de React, para que la
-// página "Mis pedidos" pueda mostrarlos. Vive en memoria: al recargar la página
-// se pierden (igual que el carrito). Más adelante se puede conectar con un service.
-import { createContext, useContext, useState } from 'react';
-import { ESTADO_INICIAL } from '../utils/pedidos';
-
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useAuth } from './AuthContext';
+import { leerToken } from '../services/api';
+import * as service from '../services/pedidos';
 const PedidosContext = createContext(null);
-
 export function PedidosProvider(props) {
-  const [pedidos, setPedidos] = useState([]);
-
-  // Guarda un pedido nuevo y lo devuelve, ya con su número, su fecha y su estado.
-  function crearPedido(datos) {
-    const nuevo = {
-      ...datos,
-      id: pedidos.length + 1,
-      fecha: new Date().toISOString(),
-      estado: ESTADO_INICIAL
-    };
-    setPedidos([...pedidos, nuevo]);
-    return nuevo;
+  const { usuario } = useAuth();
+  const token = usuario ? leerToken() : null;
+  const [estado, setEstado] = useState({ token: null, pedidos: [], cargando: false, error: '' });
+  useEffect(() => {
+    const c = new AbortController();
+    setEstado({ token, pedidos: [], cargando: !!token, error: '' });
+    if (token) service.listarPedidos(c.signal)
+      .then(pedidos => { if (!c.signal.aborted && leerToken() === token) setEstado({ token, pedidos, cargando: false, error: '' }); })
+      .catch(err => { if (!c.signal.aborted && leerToken() === token) setEstado({ token, pedidos: [], cargando: false, error: err.message }); });
+    return () => c.abort();
+  }, [token]);
+  const pedidos = estado.token === token ? estado.pedidos : [];
+  function guardar(pedido) {
+    if (!token || leerToken() !== token) return;
+    setEstado(actual => ({ ...actual, pedidos: [pedido, ...actual.pedidos.filter(p => p.id !== pedido.id)] }));
   }
-
-  return (
-    <PedidosContext.Provider value={{ pedidos, crearPedido }}>
-      {props.children}
-    </PedidosContext.Provider>
-  );
+  async function crearPedido(datos) { const pedido = await service.crearPedido(datos); guardar(pedido); return pedido; }
+  async function cambiarEstadoPedido(id, valor) { const pedido = await service.cambiarEstadoPedido(id, valor); guardar(pedido); return pedido; }
+  return <PedidosContext.Provider value={{ pedidos, cargando: !!token && (estado.token !== token || estado.cargando), error: estado.token === token ? estado.error : '', crearPedido, obtenerPedido: service.obtenerPedido, cambiarEstadoPedido }}>{props.children}</PedidosContext.Provider>;
 }
-
-// usePedidos: hook propio que abre la caja. Uso: const { pedidos } = usePedidos()
 export function usePedidos() {
   const contexto = useContext(PedidosContext);
-  if (!contexto) {
-    throw new Error('usePedidos debe usarse dentro de un PedidosProvider');
-  }
+  if (!contexto) throw new Error('usePedidos debe usarse dentro de un PedidosProvider');
   return contexto;
 }

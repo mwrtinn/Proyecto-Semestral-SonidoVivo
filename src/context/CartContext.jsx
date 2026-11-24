@@ -1,5 +1,6 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import { useAuth } from './AuthContext';
 import { useProductos } from './ProductosContext';
 
 const CartContext = createContext();
@@ -7,14 +8,22 @@ const CartContext = createContext();
 export function CartProvider(props) {
   const [carrito, setCarrito] = useState([]);
   const { productos } = useProductos();
+  const { usuario } = useAuth();
+  const idUsuario = usuario?.id_usuario;
+  // Mantiene el carrito anónimo al iniciar sesión; lo limpia al cerrar o cambiar cuenta.
+  const [propietario, setPropietario] = useState(idUsuario);
+  useEffect(() => {
+    if (propietario !== undefined && propietario !== idUsuario) setCarrito([]);
+    setPropietario(idUsuario);
+  }, [idUsuario, propietario]);
 
   const agregarAlCarrito = (producto) => {
     setCarrito((carritoActual) => {
       const productoExistente = carritoActual.find((item) => item.id === producto.id);
-      
+
       const productoOriginal = productos.find((p) => p.id === producto.id);
       const stockMaximo = productoOriginal ? productoOriginal.stock : 0;
-      
+
       if (productoExistente) {
         if (productoExistente.cantidad >= stockMaximo) {
           Swal.fire({
@@ -41,7 +50,7 @@ export function CartProvider(props) {
             : item
         );
       }
-      
+
       if (stockMaximo <= 0) {
         Swal.fire({
           icon: 'error',

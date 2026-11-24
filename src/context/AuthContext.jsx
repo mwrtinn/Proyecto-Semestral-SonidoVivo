@@ -1,65 +1,45 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { peticion, guardarToken, leerToken, borrarToken, registrarAlExpirar } from '../services/api';
-
+import { guardarToken, leerToken, borrarToken, registrarAlExpirar } from '../services/api';
+import { login, obtenerPerfil, registrarUsuario } from '../services/auth';
 const AuthContext = createContext(null);
-
 export function AuthProvider(props) {
   const [usuario, setUsuario] = useState(null);
-  // Si hay token, hay que esperar a que /auth/me responda antes de decidir si hay sesión.
   const [cargando, setCargando] = useState(() => leerToken() !== null);
-
   const cerrarSesion = useCallback(() => {
-    borrarToken();
-    setUsuario(null);
+    borrarToken(); setUsuario(null); setCargando(false);
   }, []);
-
   useEffect(() => {
+    const controller = new AbortController();
     registrarAlExpirar(cerrarSesion);
-    if (leerToken() === null) return undefined;
-
-    let vigente = true;
-    peticion('/auth/me')
-      .then((perfil) => {
-        if (vigente) setUsuario(perfil);
-      })
-      .catch(() => {
-        if (vigente) cerrarSesion();
-      })
-      .finally(() => {
-        if (vigente) setCargando(false);
-      });
-    return () => {
-      vigente = false;
-    };
+    const token = leerToken();
+    if (token) {
+      obtenerPerfil(controller.signal)
+        .then(perfil => { if (!controller.signal.aborted && leerToken() === token) setUsuario(perfil); })
+        .catch(() => { if (!controller.signal.aborted && leerToken() === token) cerrarSesion(); })
+        .finally(() => { if (!controller.signal.aborted) setCargando(false); });
+    }
+    return () => { controller.abort(); registrarAlExpirar(null); };
   }, [cerrarSesion]);
-
   async function iniciarSesion(email, clave) {
-    const { accessToken } = await peticion('/auth/login', { metodo: 'POST', cuerpo: { email, clave }, conToken: false });
+    const { accessToken } = await login({ email, clave });
+    if (!accessToken) throw new Error('La API no devolvió un JWT.');
     guardarToken(accessToken);
-    const perfil = await peticion('/auth/me');
-    setUsuario(perfil);
-    return perfil;
+    try {
+      const perfil = await obtenerPerfil();
+      if (leerToken() !== accessToken) throw new Error('La sesión cambió.');
+      setUsuario(perfil);
+      return perfil;
+    } catch (error) {
+      if (leerToken() === accessToken) cerrarSesion();
+      throw error;
+    }
   }
-
-  // El registro público siempre crea un Cliente (lo decide el backend).
-  function registrar(nombre, email, clave) {
-    return peticion('/auth/register', { metodo: 'POST', cuerpo: { nombre, email, clave }, conToken: false });
-  }
-
-  const tieneRol = (...roles) => usuario !== null && roles.includes(usuario.rol);
-
-  return (
-    <AuthContext.Provider value={{ usuario, cargando, iniciarSesion, cerrarSesion, registrar, tieneRol }}>
-      {props.children}
-    </AuthContext.Provider>
-  );
+  const registrar = (nombre, email, clave) => registrarUsuario({ nombre, email, clave });
+  const tieneRol = (...roles) => !!usuario && roles.includes(usuario.rol);
+  return <AuthContext.Provider value={{ usuario, cargando, iniciarSesion, cerrarSesion, registrar, tieneRol }}>{props.children}</AuthContext.Provider>;
 }
-
-// useAuth: hook propio. Uso: const { usuario, iniciarSesion } = useAuth()
 export function useAuth() {
   const contexto = useContext(AuthContext);
-  if (!contexto) {
-    throw new Error('useAuth debe usarse dentro de un AuthProvider');
-  }
+  if (!contexto) throw new Error('useAuth debe usarse dentro de un AuthProvider');
   return contexto;
 }

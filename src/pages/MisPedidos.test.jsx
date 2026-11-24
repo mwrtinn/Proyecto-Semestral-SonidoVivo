@@ -1,23 +1,44 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
-import { CartProvider } from '../context/CartContext'
-import { ProductosProvider } from '../context/ProductosContext'
-import Registro from './MisPedidos'
 
-describe('Página: Registro de Cuenta', () => {
-  it('Renderiza correctamente el formulario de registro y el enlace hacia el login', () => {
+import { describe, it, expect } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+
+import { AuthProvider } from '../context/AuthContext';
+import { ProductosProvider } from '../context/ProductosContext';
+import { CartProvider } from '../context/CartContext';
+
+import MisPedidos from './MisPedidos';
+
+describe('Página: MisPedidos', () => {
+
+  it('Renderiza correctamente la página de pedidos', () => {
+
+    sessionStorage.clear();
+
     render(
       <MemoryRouter>
-        <ProductosProvider>
-          <CartProvider>
-            <Registro />
-          </CartProvider>
-        </ProductosProvider>
+        <AuthProvider>
+          <ProductosProvider>
+            <CartProvider>
+              <MisPedidos />
+            </CartProvider>
+          </ProductosProvider>
+        </AuthProvider>
       </MemoryRouter>
-    )
+    );
 
-    expect(screen.getByText(/¿ya tienes cuenta?/i)).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /inicia sesión/i })).toBeInTheDocument()
-  })
-})
+    expect(
+      screen.getByRole('heading', {
+        name: 'Mis pedidos'
+      })
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByText(
+        'El historial aún no está conectado a la API.'
+      )
+    ).toBeInTheDocument();
+
+  });
+
+});
