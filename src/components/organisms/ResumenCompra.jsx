@@ -1,11 +1,15 @@
 import { Card, ListGroup } from 'react-bootstrap';
 import Precio from '../atoms/Precio';
 
-
+// Organismo: muestra el detalle de una compra (productos, cantidades y total).
+// Es solo de lectura y no conoce el router ni el context: la página le entrega
+// los datos por props (por ejemplo, productos={carrito} total={totalDinero}).
 function ResumenCompra(props) {
   const clasesExtra = props.className || "";
   const productos = props.productos || [];
+  const titulo = props.titulo || "Resumen de tu compra";
 
+  // Si la página no envía el total, se calcula aquí a partir de los productos.
   const total = props.total !== undefined
     ? props.total
     : productos.reduce((suma, item) => suma + item.precio * item.cantidad, 0);
@@ -13,7 +17,7 @@ function ResumenCompra(props) {
   return (
     <Card className={`shadow-sm ${clasesExtra}`}>
       <Card.Header as="h5" className="fw-bold bg-white">
-        Resumen de tu compra
+        {titulo}
       </Card.Header>
 
       {productos.length === 0 ? (

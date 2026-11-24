@@ -2,14 +2,15 @@ import { Container, Row, Col, Badge } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import PlantillaPublica from '../components/templates/PlantillaPublica';
 import TarjetaProducto from '../components/molecules/TarjetaProducto';
-import productosBD from '../data/productos.json';
+import { useProductos } from '../context/ProductosContext';
 import { useCarrito } from '../context/CartContext';
 
 function Ofertas() {
   const navigate = useNavigate();
   const { agregarAlCarrito } = useCarrito();
+  const { productos } = useProductos();
 
-  const productosEnOferta = productosBD.filter(
+  const productosEnOferta = productos.filter(
     (producto) => producto.enOferta === true || (producto.descuento && producto.descuento > 0)
   );
 
@@ -38,7 +39,7 @@ function Ofertas() {
               return (
                 <Col xs={12} md={6} lg={4} key={producto.id}>
                   <div className="position-relative">
-                    {producto.descuento && (
+                    {producto.descuento > 0 && (
                       <Badge
                         bg="danger"
                         className="position-absolute top-0 end-0 m-3 z-3 fs-6 shadow-sm"

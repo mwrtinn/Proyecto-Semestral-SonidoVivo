@@ -1,10 +1,11 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import TarjetaProducto from '../molecules/TarjetaProducto';
 import { useCarrito } from '../../context/CartContext';
-import productosBD from '../../data/productos.json'; 
+import { useProductos } from '../../context/ProductosContext';
 
 function CatalogoProductos(props) {
-  const productos = props.productos || productosBD; 
+  const { productos: productosGuardados } = useProductos();
+  const productos = props.productos || productosGuardados;
   const { agregarAlCarrito } = useCarrito(); 
 
   return (

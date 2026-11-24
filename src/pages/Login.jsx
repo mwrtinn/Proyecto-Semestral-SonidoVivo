@@ -29,6 +29,10 @@ function Login() {
       setEnviando(false);
     }
   };
+  useTituloPagina("Ingresar");
+
+  // La página de registro envía { registrado: true } al navegar hasta aquí.
+  const registrado = location.state && location.state.registrado;
 
   return (
     <PlantillaPublica>
@@ -36,6 +40,7 @@ function Login() {
         <Row className="justify-content-center">
           <Col xs={12} md={8} lg={5}>
             {estado.registrado && (
+            {registrado && (
               <Alert variant="success" className="mb-3">
                 Registro completado. Ahora puedes iniciar sesión.
               </Alert>
@@ -46,6 +51,7 @@ function Login() {
               </Alert>
             )}
             <FormularioLogin onEnviar={manejarLogin} error={error} cargando={enviando} />
+            <FormularioLogin onEnviar={() => navigate('/catalogo')} />
             <p className="text-center mt-3 mb-0">
               ¿Aún no tienes cuenta? <Link to="/registro">Regístrate</Link>
             </p>

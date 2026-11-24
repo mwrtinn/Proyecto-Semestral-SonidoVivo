@@ -55,6 +55,7 @@ function App() {
 
               {/* Ruta de Checkout */}
               <Route path="/checkout" element={<RutaProtegida><Checkout /></RutaProtegida>} />
+              <Route path="/checkout" element={<Checkout />} />
 
               {/* Resultado de la compra: la misma página con dos resultados */}
               <Route path="/compra-exitosa" element={<ResultadoCompra exito={true} />} />
@@ -71,6 +72,7 @@ function App() {
 
               {/* Sesión iniciada, pero sin el rol necesario */}
               <Route path="/sin-permiso" element={<SinPermiso />} />
+              <Route path="/mis-pedidos" element={<MisPedidos />} />
 
               {/*Ruta de Pagina no encontrada 404*/}
               <Route path="*" element={<NoEncontrada />} />

@@ -5,20 +5,32 @@ import FormularioCheckout from '../components/organisms/FormularioCheckout';
 import ResumenCompra from '../components/organisms/ResumenCompra';
 import Boton from '../components/atoms/Boton';
 import { useCarrito } from '../context/CartContext';
+import { useProductos } from '../context/ProductosContext';
+import { usePedidos } from '../context/PedidosContext';
 import { useTituloPagina } from '../hooks/useTituloPagina';
 
 function Checkout() {
   const navigate = useNavigate();
   const { carrito, totalDinero, vaciarCarrito } = useCarrito();
+  const { descontarStock } = useProductos();
+  const { crearPedido } = usePedidos();
 
   useTituloPagina("Confirmar pedido");
 
   const confirmarPedido = (datos) => {
-    // Siguiente pieza: aquí se registrará el pedido con pedidoService y bajará el stock.
-    // Por ahora se arma el resumen con lo que hay en el carrito, se vacía el carrito
-    // y se muestra la página de compra exitosa.
-    const pedido = {
+    // 1) El stock baja al confirmar. Si no alcanza para algún producto, la compra
+    //    NO se realiza: se muestra la página de pago fallido y el carrito queda como estaba.
+    const resultado = descontarStock(carrito);
+    if (!resultado.ok) {
+      navigate('/pago-fallido', { state: { motivo: resultado.mensaje } });
+      return;
+    }
+
+    // 2) Se guarda el pedido con lo que se compró y los datos de entrega.
+    const pedido = crearPedido({
       nombre: datos.nombre,
+      email: datos.email,
+      telefono: datos.telefono,
       entrega: datos.entrega,
       direccion: datos.direccion,
       items: carrito.map((item) => ({
@@ -28,7 +40,9 @@ function Checkout() {
         cantidad: item.cantidad
       })),
       total: totalDinero
-    };
+    });
+
+    // 3) Se vacía el carrito y se muestra la página de compra exitosa.
     vaciarCarrito();
     navigate('/compra-exitosa', { state: { pedido: pedido } });
   };

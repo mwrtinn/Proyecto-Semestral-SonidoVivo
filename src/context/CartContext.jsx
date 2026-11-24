@@ -1,17 +1,18 @@
 import { createContext, useState, useContext } from 'react';
 import Swal from 'sweetalert2';
-import productosBD from '../data/productos.json';
+import { useProductos } from './ProductosContext';
 
 const CartContext = createContext();
 
 export function CartProvider(props) {
   const [carrito, setCarrito] = useState([]);
+  const { productos } = useProductos();
 
   const agregarAlCarrito = (producto) => {
     setCarrito((carritoActual) => {
       const productoExistente = carritoActual.find((item) => item.id === producto.id);
       
-      const productoOriginal = productosBD.find((p) => p.id === producto.id);
+      const productoOriginal = productos.find((p) => p.id === producto.id);
       const stockMaximo = productoOriginal ? productoOriginal.stock : 0;
       
       if (productoExistente) {

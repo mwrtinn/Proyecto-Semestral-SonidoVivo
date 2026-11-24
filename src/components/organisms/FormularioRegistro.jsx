@@ -9,7 +9,9 @@ import {
   validarConfirmacion
 } from '../../utils/validaciones';
 
-
+// Organismo: formulario para crear una cuenta.
+// Es dueño del estado (valores y errores). Las reglas viven en utils/validaciones.js
+// y la página decide qué hacer cuando todo está correcto (onEnviar).
 function FormularioRegistro(props) {
   const clasesExtra = props.className || "";
 
@@ -22,7 +24,7 @@ function FormularioRegistro(props) {
   const manejarSubmit = (e) => {
     e.preventDefault();
 
-   
+    // Se validan TODOS los campos para mostrar todos los errores juntos.
     const nuevosErrores = {
       nombre: validarObligatorio(nombre, 'El nombre es obligatorio.'),
       email: validarEmail(email),
