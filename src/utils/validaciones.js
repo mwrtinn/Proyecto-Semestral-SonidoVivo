@@ -10,6 +10,14 @@ export function validarClave(clave) {
   return '';
 }
 
+// Registro: el backend exige mínimo 8 caracteres (zod en auth.dto.js), así que el frontend pide lo mismo.
+// El login sigue usando validarClave porque solo necesita que no esté vacía.
+export function validarClaveRegistro(clave) {
+  if (clave.trim() === '') return 'La contraseña es obligatoria.';
+  if (clave.length < 8) return 'La contraseña debe tener al menos 8 caracteres.';
+  return '';
+}
+
 // Campo obligatorio genérico: rechaza texto vacío o solo con espacios.
 // El mensaje se pasa completo: validarObligatorio(valor, 'El nombre es obligatorio.')
 export function validarObligatorio(valor, mensaje) {

@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ProductosProvider } from './context/ProductosContext';
 import { PedidosProvider } from './context/PedidosContext';
 import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext';
+import RutaProtegida from './routes/RutaProtegida';
 import Inicio from "./pages/Inicio";
 import Catalogo from "./pages/Catalogo";
 import Login from "./pages/Login";
@@ -14,11 +16,14 @@ import Checkout from "./pages/Checkout";
 import ResultadoCompra from "./pages/ResultadoCompra";
 import MisPedidos from "./pages/MisPedidos";
 import NoEncontrada from "./pages/NoEncontrada";
+import SinPermiso from "./pages/SinPermiso";
+import AdminUsuarios from "./pages/AdminUsuarios";
 
 function App() {
   return (
     // El orden importa: CartProvider usa los productos (para revisar el stock),
     // así que ProductosProvider tiene que envolverlo.
+    <AuthProvider>
     <ProductosProvider>
       <PedidosProvider>
         <CartProvider>
@@ -49,6 +54,7 @@ function App() {
               <Route path="/carrito" element={<Carrito />} />
 
               {/* Ruta de Checkout */}
+              <Route path="/checkout" element={<RutaProtegida><Checkout /></RutaProtegida>} />
               <Route path="/checkout" element={<Checkout />} />
 
               {/* Resultado de la compra: la misma página con dos resultados */}
@@ -56,6 +62,16 @@ function App() {
               <Route path="/pago-fallido" element={<ResultadoCompra exito={false} />} />
 
               {/* Pedidos realizados */}
+              <Route path="/mis-pedidos" element={<RutaProtegida><MisPedidos /></RutaProtegida>} />
+
+              {/* Administración de usuarios: solo con sesión y rol Administrador */}
+              <Route
+                path="/admin/usuarios"
+                element={<RutaProtegida roles={['Administrador']}><AdminUsuarios /></RutaProtegida>}
+              />
+
+              {/* Sesión iniciada, pero sin el rol necesario */}
+              <Route path="/sin-permiso" element={<SinPermiso />} />
               <Route path="/mis-pedidos" element={<MisPedidos />} />
 
               {/*Ruta de Pagina no encontrada 404*/}
@@ -65,6 +81,7 @@ function App() {
         </CartProvider>
       </PedidosProvider>
     </ProductosProvider>
+    </AuthProvider>
   );
 }
  
