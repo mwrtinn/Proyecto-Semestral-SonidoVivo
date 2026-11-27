@@ -1,88 +1,160 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import { ProductosProvider } from './context/ProductosContext';
 import { PedidosProvider } from './context/PedidosContext';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
+
 import RutaProtegida from './routes/RutaProtegida';
-import Inicio from "./pages/Inicio";
-import Catalogo from "./pages/Catalogo";
-import Login from "./pages/Login";
-import Registro from "./pages/Registro";
-import Categorias from "./pages/Categorias";  
-import Ofertas from "./pages/Ofertas";
+
+import Inicio from './pages/Inicio';
+import Catalogo from './pages/Catalogo';
+import Login from './pages/Login';
+import Registro from './pages/Registro';
+import Categorias from './pages/Categorias';
+import Ofertas from './pages/Ofertas';
 import DetalleProducto from './pages/DetalleProducto';
-import Carrito from "./pages/Carrito"; 
-import Checkout from "./pages/Checkout";
-import ResultadoCompra from "./pages/ResultadoCompra";
-import MisPedidos from "./pages/MisPedidos";
-import NoEncontrada from "./pages/NoEncontrada";
-import SinPermiso from "./pages/SinPermiso";
-import AdminUsuarios from "./pages/AdminUsuarios";
+import Carrito from './pages/Carrito';
+import Checkout from './pages/Checkout';
+import ResultadoCompra from './pages/ResultadoCompra';
+import MisPedidos from './pages/MisPedidos';
+import NoEncontrada from './pages/NoEncontrada';
+import SinPermiso from './pages/SinPermiso';
+import AdminUsuarios from './pages/AdminUsuarios';
+import AdminProductos from './pages/AdminProductos';
 
 function App() {
   return (
-    // El orden importa: CartProvider usa los productos (para revisar el stock),
-    // así que ProductosProvider tiene que envolverlo.
     <AuthProvider>
-    <ProductosProvider>
-      <PedidosProvider>
-        <CartProvider>
-          <BrowserRouter>
-            <Routes>
-              {/* Ruta principal: Muestra la página de Inicio */}
-              <Route path="/" element={<Inicio />} />
-          
-              {/* Ruta del Catálogo */}
-              <Route path="/catalogo" element={<Catalogo />} />
-          
-              {/* Ruta del Login */}
-              <Route path="/login" element={<Login />} />
+      <ProductosProvider>
+        <PedidosProvider>
+          <CartProvider>
+            <BrowserRouter>
+              <Routes>
 
-              {/* Ruta del Registro */}
-            <Route path="/registro" element={<Registro />} />
+                {/* Página de inicio */}
+                <Route
+                  path="/"
+                  element={<Inicio />}
+                />
 
-            {/* Ruta de Categorias */}
-              <Route path="/categorias" element={<Categorias />} />
+                {/* Catálogo */}
+                <Route
+                  path="/catalogo"
+                  element={<Catalogo />}
+                />
 
-              {/* Ruta de Ofertas */}
-              <Route path="/ofertas" element={<Ofertas />} />
+                {/* Inicio de sesión */}
+                <Route
+                  path="/login"
+                  element={<Login />}
+                />
 
-              {/* Ruta de Detalle de Producto */}
-              <Route path="/producto/:id" element={<DetalleProducto />} />
+                {/* Registro de usuarios */}
+                <Route
+                  path="/registro"
+                  element={<Registro />}
+                />
 
-              {/* Ruta de Carrito */}
-              <Route path="/carrito" element={<Carrito />} />
+                {/* Categorías */}
+                <Route
+                  path="/categorias"
+                  element={<Categorias />}
+                />
 
-              {/* Ruta de Checkout */}
-              <Route path="/checkout" element={<RutaProtegida><Checkout /></RutaProtegida>} />
-              <Route path="/checkout" element={<Checkout />} />
+                {/* Ofertas */}
+                <Route
+                  path="/ofertas"
+                  element={<Ofertas />}
+                />
 
-              {/* Resultado de la compra: la misma página con dos resultados */}
-              <Route path="/compra-exitosa" element={<ResultadoCompra exito={true} />} />
-              <Route path="/pago-fallido" element={<ResultadoCompra exito={false} />} />
+                {/* Detalle de producto */}
+                <Route
+                  path="/producto/:id"
+                  element={<DetalleProducto />}
+                />
 
-              {/* Pedidos realizados */}
-              <Route path="/mis-pedidos" element={<RutaProtegida><MisPedidos /></RutaProtegida>} />
+                {/* Carrito de compras */}
+                <Route
+                  path="/carrito"
+                  element={<Carrito />}
+                />
 
-              {/* Administración de usuarios: solo con sesión y rol Administrador */}
-              <Route
-                path="/admin/usuarios"
-                element={<RutaProtegida roles={['Administrador']}><AdminUsuarios /></RutaProtegida>}
-              />
+                {/* Confirmación de compra */}
+                <Route
+                  path="/checkout"
+                  element={
+                    <RutaProtegida>
+                      <Checkout />
+                    </RutaProtegida>
+                  }
+                />
 
-              {/* Sesión iniciada, pero sin el rol necesario */}
-              <Route path="/sin-permiso" element={<SinPermiso />} />
-              <Route path="/mis-pedidos" element={<MisPedidos />} />
+                {/* Compra exitosa */}
+                <Route
+                  path="/compra-exitosa"
+                  element={
+                    <ResultadoCompra exito={true} />
+                  }
+                />
 
-              {/*Ruta de Pagina no encontrada 404*/}
-              <Route path="*" element={<NoEncontrada />} />
-            </Routes>
-          </BrowserRouter>
-        </CartProvider>
-      </PedidosProvider>
-    </ProductosProvider>
+                {/* Pago fallido */}
+                <Route
+                  path="/pago-fallido"
+                  element={
+                    <ResultadoCompra exito={false} />
+                  }
+                />
+
+                {/* Historial de pedidos */}
+                <Route
+                  path="/mis-pedidos"
+                  element={
+                    <RutaProtegida>
+                      <MisPedidos />
+                    </RutaProtegida>
+                  }
+                />
+
+                {/* Administración de usuarios */}
+                <Route
+                  path="/admin/usuarios"
+                  element={
+                    <RutaProtegida roles={['Administrador']}>
+                      <AdminUsuarios />
+                    </RutaProtegida>
+                  }
+                />
+
+                {/* Administración de productos */}
+                <Route
+                  path="/admin/productos"
+                  element={
+                    <RutaProtegida roles={['Administrador']}>
+                      <AdminProductos />
+                    </RutaProtegida>
+                  }
+                />
+
+                {/* Acceso sin permisos */}
+                <Route
+                  path="/sin-permiso"
+                  element={<SinPermiso />}
+                />
+
+                {/* Página no encontrada */}
+                <Route
+                  path="*"
+                  element={<NoEncontrada />}
+                />
+
+              </Routes>
+            </BrowserRouter>
+          </CartProvider>
+        </PedidosProvider>
+      </ProductosProvider>
     </AuthProvider>
   );
 }
- 
+
 export default App;

@@ -1,24 +1,63 @@
 import { peticion } from './api';
 
-export const listarProductos = () =>
-  peticion('/productos', { conToken: false });
+import {
+  crearProductoDto,
+  actualizarProductoDto,
+  productoResponseDto
+} from '../dto/productos.dto';
 
-export const obtenerProducto = (id) =>
-  peticion(`/productos/${id}`, { conToken: false });
+export async function listarProductos() {
+  const respuesta = await peticion('/productos', {
+    metodo: 'GET',
+    conToken: false
+  });
 
-export const crearProducto = (dto) =>
-  peticion('/productos', {
+  return respuesta.map(productoResponseDto);
+}
+
+export async function listarProductosAdmin() {
+  const respuesta = await peticion('/productos/admin', {
+    metodo: 'GET'
+  });
+
+  return respuesta.map(productoResponseDto);
+}
+
+export async function obtenerProducto(id) {
+  const respuesta = await peticion(`/productos/${id}`, {
+    metodo: 'GET',
+    conToken: false
+  });
+
+  return productoResponseDto(respuesta);
+}
+
+export async function crearProducto(datos) {
+  const respuesta = await peticion('/productos', {
     metodo: 'POST',
-    cuerpo: dto
+    cuerpo: crearProductoDto(datos)
   });
 
-export const modificarProducto = (id, dto) =>
-  peticion(`/productos/${id}`, {
+  return productoResponseDto(respuesta);
+}
+
+export async function modificarProducto(id, datos) {
+  const respuesta = await peticion(`/productos/${id}`, {
     metodo: 'PATCH',
-    cuerpo: dto
+    cuerpo: actualizarProductoDto(datos)
   });
 
-export const eliminarProducto = (id) =>
-  peticion(`/productos/${id}`, {
+  return productoResponseDto(respuesta);
+}
+
+export async function eliminarProducto(id) {
+  return peticion(`/productos/${id}`, {
     metodo: 'DELETE'
   });
+}
+
+export async function reactivarProducto(id) {
+  return modificarProducto(id, {
+    activo: true
+  });
+}
